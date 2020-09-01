@@ -417,7 +417,7 @@
                 "sha256:596eaa8645b6dbc24d6610e335f8ddf5f925b4c4b86fdc7146abb0bf0da65d17"
             ],
             "index": "pypi",
-            "version": "==0.11.7"
+            "version": "==0.11.5"
 
         },
         "uvloop": {
