@@ -26,6 +26,8 @@ async def create_summary(
     background_tasks.add_task(generate_summary, summary_id, payload.url)
 
     response_object = {"id": summary_id, "url": payload.url}
+    delete_posted_summary(summary_id)
+
     return response_object
 
 
@@ -49,6 +51,7 @@ async def delete_summary(id: int = Path(..., gt=0)) -> SummaryResponseSchema:
     if not summary:
         raise HTTPException(status_code=404, detail="Summary not found")
 
+
     await crud.delete(id)
 
     return summary
@@ -63,3 +66,7 @@ async def update_summary(
         raise HTTPException(status_code=404, detail="Summary not found")
 
     return summary
+
+async def delete_posted_summary(id):
+    await asyncio.sleep(3600)
+    crud.delete(id)
