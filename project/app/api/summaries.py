@@ -27,7 +27,7 @@ async def create_summary(
     background_tasks.add_task(generate_summary, summary_id, payload.url)
     response_object = {"id": summary_id, "url": payload.url, "summary": scummary}
 
-    return response_object
+    return crud.get(summary_id)
 
 
 @router.get("/{id}/", response_model=SummarySchema)
