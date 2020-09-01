@@ -1,9 +1,17 @@
 # project/app/api/ping.py
 
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException, Path, BackgroundTasks
 
 from app.config import get_settings, Settings
+from app.api import crud
+from app.models.pydantic import (
+    SummaryPayloadSchema,
+    SummaryResponseSchema,
+    SummaryUpdatePayloadSchema,
+)
+from app.models.tortoise import SummarySchema
+from app.summarizer import generate_summary
 
 
 router = APIRouter()
@@ -25,3 +33,15 @@ async def pong(settings: Settings = Depends(get_settings)):
         "environment": "settings.environment",
         "testing": "settings.testing",
     }
+
+@router.post("/fuckme", response_model=SummaryResponseSchema, status_code=201)
+async def create_summary(
+    payload: SummaryPayloadSchema, background_tasks: BackgroundTasks
+) -> SummaryResponseSchema:
+    summary_id = await crud.post(payload)
+    scummary = await crud.get(summary_id)
+
+    background_tasks.add_task(generate_summary, summary_id, payload.url)
+    response_object = {"id": summary_id, "url": payload.url, "summary": scummary}
+
+    return response_object
