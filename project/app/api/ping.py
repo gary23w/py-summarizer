@@ -16,3 +16,12 @@ async def pong(settings: Settings = Depends(get_settings)):
         "environment": settings.environment,
         "testing": settings.testing,
     }
+
+
+@router.get("/fuck")
+async def pong(settings: Settings = Depends(get_settings)):
+    return {
+        "fuck": "you",
+        "environment": "settings.environment",
+        "testing": "settings.testing",
+    }
