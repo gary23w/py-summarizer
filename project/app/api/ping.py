@@ -34,14 +34,3 @@ async def pong(settings: Settings = Depends(get_settings)):
         "testing": "settings.testing",
     }
 
-@router.post("/fuckme", response_model=SummaryResponseSchema, status_code=201)
-async def create_summary(
-    payload: SummaryPayloadSchema, background_tasks: BackgroundTasks
-) -> SummaryResponseSchema:
-    summary_id = await crud.post(payload)
-    
-
-    background_tasks.add_task(generate_summary, summary_id, payload.url)
-    response_object = {"id": summary_id, "url": payload.url, "summary": scummary}
-
-    return response_object
