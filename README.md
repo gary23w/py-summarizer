@@ -2,7 +2,7 @@
 
 API to summarize input text
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/gary23w/summarize-api)
+![Continuous Integration and Delivery](https://github.com/bradstimpson/summaries/workflows/Continuous%20Integration%20and%20Delivery/badge.svg?branch=master)
 
 ## normal run
 

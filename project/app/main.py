@@ -24,8 +24,6 @@ def create_application() -> FastAPI:
 app = create_application()
 
 
-
-
 @app.on_event("startup")
 async def startup_event():
     log.info("Starting up...")

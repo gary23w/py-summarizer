@@ -7,8 +7,6 @@ WORKDIR /usr/src/app
 # set environment varibles
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
-ENV ENVIRONMENT prod
-ENV TESTING 0
 
 # install system dependencies
 RUN apt-get update \
@@ -32,6 +30,3 @@ COPY . /usr/src/app
 # run entrypoint.sh
 ENTRYPOINT ["./entrypoint.sh"]
 #CMD tail -f /dev/null
-
-#
-CMD gunicorn --bind 0.0.0.0:5003 app.main:app -k uvicorn.workers.UvicornWorker
