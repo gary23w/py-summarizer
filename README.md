@@ -1,4 +1,4 @@
-# summaries
+# summarize
 
 summarize text
 
