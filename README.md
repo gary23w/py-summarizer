@@ -1,4 +1,4 @@
-# summaries
+# py-summarizer
 
 API to summarize input text
 
