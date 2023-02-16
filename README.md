@@ -1,39 +1,61 @@
-# py-summarizer
+## py-summarizer
 
-API to summarize input text
+py-summarizer is an API that utilizes natural language processing to summarize input text.
 
-## normal run
+### Running Tests
 
-$ docker-compose exec web python -m pytest
+To run tests for py-summarizer, follow these commands:
 
-## disable warnings
+```
+docker-compose exec web python -m pytest
+```
 
-$ docker-compose exec web python -m pytest -p no:warnings
+To disable warnings, run:
 
-## run only the last failed tests
+```
+docker-compose exec web python -m pytest -p no:warnings
+```
 
-$ docker-compose exec web python -m pytest --lf
+To run only the last failed tests, execute:
 
-## run only the tests with names that match the string expression
+```
+docker-compose exec web python -m pytest --lf
+```
 
-$ docker-compose exec web python -m pytest -k "summary and not test_read_summary"
+To run only the tests with names that match a particular string expression, use:
 
-## stop the test session after the first failure
+```
+docker-compose exec web python -m pytest -k "summary and not test_read_summary"
+```
 
-$ docker-compose exec web python -m pytest -x
+To stop the test session after the first failure, run:
 
-## enter PDB after first failure then end the test session
+```
+docker-compose exec web python -m pytest -x
+```
 
-$ docker-compose exec web python -m pytest -x --pdb
+If you want to enter PDB after the first failure then end the test session, run:
 
-## stop the test run after two failures
+```
+docker-compose exec web python -m pytest -x --pdb
+```
 
-$ docker-compose exec web python -m pytest --maxfail=2
+To stop the test run after two failures, execute:
 
-## show local variables in tracebacks
+```
+docker-compose exec web python -m pytest --maxfail=2
+```
 
-$ docker-compose exec web python -m pytest -l
+To show local variables in tracebacks, use:
 
-## list the 2 slowest tests
+```
+docker-compose exec web python -m pytest -l
+```
 
-$ docker-compose exec web python -m pytest --durations=2
+To list the 2 slowest tests, run:
+
+```
+docker-compose exec web python -m pytest --durations=2
+```
+
+Please note that docker-compose is required to run the tests.
