@@ -8,7 +8,7 @@ pytest = "*"
 requests = "*"
 pytest-cov = "*"
 flake8 = "*"
-black = "==19.10b0"
+black = "==24.3.0"
 isort = "*"
 pytest-xdist = "*"
 
